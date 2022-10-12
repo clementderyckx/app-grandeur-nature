@@ -1,0 +1,27 @@
+@import './../../css/lib';
+
+.btn{
+    background: #eee;
+    width: fit-content;
+    padding: 6px 15px;
+    border-radius: 6px;
+    @include media-md-text();
+    @media screen and (max-width: 768px){
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            margin: 0 auto;
+            padding: 15px 0px;
+            font-size: 16px;
+    }
+    @media screen and (max-width: 495px){
+            font-size: 14px;
+    }
+    &-main-action {
+        color: #fff;
+        cursor: pointer;
+        @include bg-with-transition($main-color);
+
+    }
+}

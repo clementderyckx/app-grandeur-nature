@@ -1,0 +1,4 @@
+.qrcode-reader{
+    width: 100%;
+    @include dnone-on-big-screen();
+}

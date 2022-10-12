@@ -1,0 +1,130 @@
+@import './../../css/lib';
+
+.check-contact{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 125px 1fr 220px;
+    grid-template-columns: 1fr;
+    padding-bottom: 50px;
+    @media screen and (max-width: 375px) {
+        grid-template-rows: 100px 1fr 220px;
+    }
+    
+    @include dnone-on-big-screen();
+
+}
+
+.header, .footer{
+    width: 100%;
+    @include flex-center();
+    padding: 0px 20px;
+}
+.header{
+    .logo-header{
+        width: 150px;
+    }
+}
+.footer{
+    justify-content: flex-start;
+    .logo-footer{
+        width: 200px;
+    }
+}
+
+.content{
+
+    display: grid;
+    grid-template-rows: 150px 1fr;
+    grid-template-columns: 1fr;
+    &.full-height{
+        grid-template-rows: 1fr;
+    }
+    @media screen and (max-width: 375px) {
+        grid-template-rows: 125px 1fr;
+        &.full-height{
+            grid-template-rows: 1fr;
+        }
+    }
+
+}
+
+.response-banner{
+    width: 100%;
+    font-family: 'Aileron-SemiBold', sans-serif;
+    @include flex-center();
+    &.success{
+        background: $success-color;
+    }
+    &.danger{
+        background: $danger-color;
+    }
+    &.error{
+        background: $error-color;
+    }
+
+}
+.response-text{
+    font-family: 'Aileron-SemiBold', sans-serif;
+    font-size: 24px;
+    color: #eee;
+    text-align: center;
+    @media screen and (max-width:375px){
+        font-size: 22px; 
+    }
+    span{
+        display: block;
+        margin-bottom: 25px;
+    }
+
+}
+
+.response-contact{
+    background: #eee;
+    display: flex;
+    justify-content: center;
+    padding: 50px 30px 0px 30px;
+    &-content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    p{
+        font-size: 22px;
+        text-align: center;
+        @media screen and (max-width: 375px) {
+            font-size: 18px;
+        }
+    }
+
+
+
+
+}
+
+.contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+.separator{
+    height: 2px;
+    width: 75%;
+    max-width: 200px;
+    background-color: $main;
+    margin: 20px 0px;
+}
+
+
+.btn{
+    height: 60px;
+    width: 60%;
+    max-width: 500px;
+    @include btn-default($main, #eee, 7px);
+    font-family: 'Aileron-SemiBold';
+    font-size: 20px;
+}

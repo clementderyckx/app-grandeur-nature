@@ -1,0 +1,122 @@
+a {
+  color: #a00f9f;
+  text-decoration: none;
+}
+
+.submit-validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .submit-validation {
+    padding: 25px;
+  }
+}
+
+.submit-validation-title {
+  color: #a00f9f;
+  font-size: 32px;
+  text-align: center;
+  font-weight: 500;
+}
+@media screen and (max-width: 1360px) {
+  .submit-validation-title {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 905px) {
+  .submit-validation-title {
+    font-size: 26px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .submit-validation-title {
+    font-size: 24px;
+  }
+}
+
+.submit-validation-message {
+  margin-top: 30px;
+  font-size: 24px;
+  line-height: 46px;
+  font-family: "Aileron Regular", sans-serif;
+}
+@media screen and (max-width: 1690px) {
+  .submit-validation-message {
+    font-size: 22px;
+    line-height: 42px;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .submit-validation-message {
+    font-size: 20px;
+    line-height: 38px;
+  }
+}
+@media screen and (max-width: 1090px) {
+  .submit-validation-message {
+    font-size: 18px;
+    line-height: 34px;
+  }
+}
+@media screen and (max-width: 1090px) {
+  .submit-validation-message {
+    font-size: 18px;
+    line-height: 34px;
+  }
+}
+@media screen and (max-width: 905px) {
+  .submit-validation-message {
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .submit-validation-message {
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .submit-validation-message br {
+    padding: 10px 0;
+  }
+}
+
+.submit-validation-signature {
+  margin-top: 20px;
+  position: relative;
+  font-size: 24px;
+  line-height: 34px;
+  text-align: end;
+}
+@media screen and (max-width: 1690px) {
+  .submit-validation-signature {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 1360px) {
+  .submit-validation-signature {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+@media screen and (max-width: 1090px) {
+  .submit-validation-signature {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+@media screen and (max-width: 905px) {
+  .submit-validation-signature {
+    font-size: 16px;
+    line-height: 30px;
+  }
+}
+@media screen and (max-width: 790px) {
+  .submit-validation-signature {
+    font-size: 14px;
+    line-height: 28px;
+  }
+}/*# sourceMappingURL=submitValidationMessage.css.map */

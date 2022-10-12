@@ -1,0 +1,66 @@
+@import './../../css/lib';
+
+
+.expand-btn{
+    position: relative;
+    min-height: 30px;
+    min-width: 130px;
+}
+
+.expand-btn-container{
+    overflow: hidden;
+    display: inline-block;
+    width: auto;
+    position: absolute;
+    min-width: 130px;
+}
+
+
+.btn{
+    max-height: 30px;
+    position: relative;
+    padding: 5px 12px 4px 12px;
+    width: auto;
+    display: inline-block;
+    border-radius: 7px;
+    color: #fff;
+    z-index: 20;
+    cursor: pointer;
+    @include btn-bg-hover();
+    span, svg{
+        padding: 0px 2px;
+    }
+    svg{
+        padding-left: 5px;
+    }
+    
+}
+
+.expand-btn-menu{
+    // display: none;
+    position: relative;
+    opacity: 0%;
+    transform: translateY(-100%);
+    transition: transform 0.5s, opacity 0.5s;
+    background: #FFF;
+    z-index: 1;
+
+
+    &.visible{
+        display: block;
+        opacity: 100%;
+        transform: translateY(0%);
+        transition: transform 0.5s, opacity 0.5s;
+    }
+}
+
+.expand-btn-item{
+    text-align: center;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    &:hover{
+        background: darken(#FFF, 3%);
+        transition: background 0.15s ease-in;
+    }
+}

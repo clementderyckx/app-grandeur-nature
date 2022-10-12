@@ -1,0 +1,8 @@
+@mixin bg-with-transition($color, $hoveredColor: darken($color, 5%)){
+    transition: background 0.2s ease-out;
+    background: $color;
+    &:hover{
+        transition: background 0.2s ease-out;
+        background: $hoveredColor;
+    }
+}

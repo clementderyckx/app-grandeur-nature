@@ -1,0 +1,111 @@
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: Poppins, sans-serif;
+}
+
+.satisfaction-question {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.satisfaction-question .question-label {
+  padding: 10px 0px;
+}
+@media screen and (max-width: 890px) {
+  .satisfaction-question .question-label {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .satisfaction-question .question-label {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 495px) {
+  .satisfaction-question .question-label {
+    font-size: 12px;
+  }
+}
+.satisfaction-question .checkbox-question {
+  width: 100%;
+}
+.satisfaction-question .checkbox-question .answers {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media screen and (max-width: 990px) {
+  .satisfaction-question .checkbox-question .answers {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.satisfaction-question .checkbox-question .checkbox-answer {
+  padding: 5px 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media screen and (max-width: 890px) {
+  .satisfaction-question .checkbox-question .checkbox-answer {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .satisfaction-question .checkbox-question .checkbox-answer {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 495px) {
+  .satisfaction-question .checkbox-question .checkbox-answer {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .satisfaction-question .checkbox-question .checkbox-answer {
+    padding: 5px 10px;
+  }
+}/*# sourceMappingURL=SatisfactionQuestion.css.map */

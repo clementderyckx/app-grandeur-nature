@@ -1,0 +1,226 @@
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Aileron Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Regular"), url("assets/aileron/Aileron-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Italic"), url("assets/aileron/Aileron-Italic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Thin";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Thin"), url("assets/aileron/Aileron-Thin.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron UltraLight";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron UltraLight"), url("assets/aileron/Aileron-UltraLight.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Thin Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Thin Italic"), url("assets/aileron/Aileron-ThinItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron UltraLight Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron UltraLight Italic"), url("assets/aileron/Aileron-UltraLightItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Light";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Light"), url("assets/aileron/Aileron-Light.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Light Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Light Italic"), url("assets/aileron/Aileron-LightItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron SemiBold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron SemiBold"), url("assets/aileron/Aileron-SemiBold.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron SemiBold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron SemiBold Italic"), url("assets/aileron/Aileron-SemiBoldItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Bold";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Bold"), url("assets/aileron/Aileron-Bold.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Bold Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Bold Italic"), url("assets/aileron/Aileron-BoldItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Black";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Black"), url("assets/aileron/Aileron-Black.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Heavy";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Heavy"), url("assets/aileron/Aileron-Heavy.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Black Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Black Italic"), url("assets/aileron/Aileron-BlackItalic.woff") format("woff");
+}
+@font-face {
+  font-family: "Aileron Heavy Italic";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Aileron Heavy Italic"), url("assets/aileron/Aileron-HeavyItalic.woff") format("woff");
+}
+html {
+  font-family: "Aileron Regular";
+  -webkit-print-color-adjust: exact;
+}
+
+.body {
+  width: 1920px;
+  height: 905px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 50%;
+  background-color: red;
+  transform-origin: top right;
+  transform: rotate(-90deg);
+}
+
+#visitor-mention-svg {
+  fill: white;
+  width: 70%;
+}
+
+header {
+  background-color: #954d9e;
+  width: 100%;
+  text-align: center;
+}
+
+.main-logo {
+  width: 40%;
+  margin: 50px auto 20px auto;
+}
+.main-logo #logo-socodip-svg {
+  width: 100%;
+}
+
+.company, .visitor-id, .qrCode {
+  width: 100%;
+  text-align: center;
+}
+
+.visitor-id {
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.company {
+  margin-top: 25px;
+  font-family: "Aileron SemiBold", sans-serif;
+  font-size: 22px;
+}
+
+.qrCode {
+  margin: 20px 0px;
+}
+
+.qrCode img {
+  width: 40%;
+}
+
+.footer .footer-logo {
+  width: 45%;
+}
+.footer .footer-logo #logo-grandeur-nature-svg {
+  width: 100%;
+}
+.footer .footer-end {
+  margin-top: 10px;
+  height: 40px;
+  width: 100%;
+  background-color: #954d9e;
+}
+
+/*# sourceMappingURL=badge.css.map */

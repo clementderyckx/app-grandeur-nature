@@ -1,0 +1,30 @@
+@import './../../css/lib';
+
+.search-input{
+    display: flex;
+    width: fit-content;
+    max-height: 30px;
+
+    &-input{
+
+        padding: 5px 6px;
+        max-height: 30px;
+        border: 1px solid $main-color;
+        border-right: none;
+        border-radius: 6px 0px 0px 6px;
+        outline: none;
+        
+    }
+    
+
+    &-btn{
+        @include flex-center();
+        width: 30px;
+        @include square-max-size(30px);
+        color: #EEE;
+        cursor: pointer;
+        border-radius: 0px 6px 6px 0px;
+        @include btn-bg-hover();
+
+    }
+}

@@ -1,0 +1,34 @@
+@import "./../assets/colours";
+@mixin inputBasics($color : $purple){
+  .form-label{
+    width: 90%;
+    position: relative;
+    z-index: 1;
+    @media screen and (max-width: 768px) {
+      margin-bottom: 15px;
+    }
+  }
+
+  .label-text{
+    display: block;
+    color: $color;
+    position: relative;
+    top: 25px;
+  }
+
+  .form-input{
+    display: block;
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid $color;
+    outline: none;
+    background-color: transparent;
+    font-size: 14px;
+    z-index: 10;
+    border-radius: 0px;
+  }
+
+
+
+}

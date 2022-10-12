@@ -1,0 +1,26 @@
+@import './variables';
+
+@mixin flex-center(){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin square-max-size($value){
+    max-width: $value;
+    max-height: $value;
+}
+
+@mixin btn-bg-hover{
+    background-color: $main-color;
+    transition: background 0.15s ease-in;
+    &:hover{
+        background: darken($main-color, 10%);
+        transition: background 0.15s ease-out;
+    }
+}
+
+@mixin default-link($color: #000){
+    text-decoration: none;
+    color: $color;
+}

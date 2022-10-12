@@ -1,0 +1,112 @@
+html, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+img, video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td, th {
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: Poppins, sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-family: Aileron, sans-serif;
+  background: #FFF !important;
+}
+
+.space-around {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.space-between {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.text_error {
+  color: #f54828;
+}
+@media screen and (max-width: 890px) {
+  .text_error {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text_error {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 495px) {
+  .text_error {
+    font-size: 12px;
+  }
+}
+
+.text_success {
+  color: green;
+}
+@media screen and (max-width: 890px) {
+  .text_success {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .text_success {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 495px) {
+  .text_success {
+    font-size: 12px;
+  }
+}/*# sourceMappingURL=App.css.map */

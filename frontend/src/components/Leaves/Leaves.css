@@ -1,0 +1,24 @@
+.leaves {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 100%;
+  z-index: 1;
+}
+.leaves-line {
+  padding: 15px 0;
+}
+
+.leaf {
+  width: 60px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  position: relative;
+  overflow: hidden;
+  opacity: 50%;
+}/*# sourceMappingURL=Leaves.css.map */

@@ -1,0 +1,105 @@
+@import "./../../css/mixins/mixins";
+@import "./../../css/assets/colours";
+
+body{
+  background: url("./../../imgs/bg.jpg") center / cover no-repeat;
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title{
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 30px;
+  text-align: center;
+
+
+  img{
+    height: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+  h1{
+    color: $purple;
+    font-size: 54px;
+    font-weight: bold;
+    font-family: 'Aileron SemiBold', sans-serif;
+    @media screen and (max-width: 980px) {
+      font-size: 48px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 38px;
+    }
+    @media screen and (max-width: 545px) {
+      font-size: 32px;
+    }
+    @media screen and (max-width: 445px) {
+      font-size: 28px;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 24px;
+    }
+  }
+
+}
+
+.subtitle{
+  font-size: 36px;
+  font-family: 'Aileron', sans-serif;
+  @media screen and (max-width: 980px) {
+    font-size: 28px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+  @media screen and (max-width: 545px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 18px;
+  }
+  .hours{
+    font-family: "Aileron Light", sans-serif;
+    font-size: 34px;
+    @media screen and (max-width: 980px) {
+      font-size: 24px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 20px;
+    }
+    @media screen and (max-width: 545px) {
+      font-size: 18px;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.success_infos{
+  margin-top: 80px;
+}
+
+.success_infos{
+  @include formSpaces();
+  p{
+    text-align: center;
+    margin: 20px 0;
+    &:nth-child(2){
+      margin: 30px 0;
+    }
+  }
+  div{
+    text-align: center;
+  }
+}
+
+.content-container{
+  @include contentContainer();
+  z-index: 10;
+
+}
+

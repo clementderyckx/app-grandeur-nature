@@ -1,0 +1,43 @@
+@import './../../css/lib';
+
+.transactions-array-row{
+    background: #eee;
+    display: grid;
+    grid-template-columns: 13% 13% 1fr 9% 9% 1fr 8%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    color: #000;
+
+}
+.transactions-array-header{
+    font-weight: 500;
+
+    p{
+        // margin: 0 auto;
+        // text-align: center;
+
+    }
+}
+
+.transactions-array-elem{
+    padding: 10px 15px 10px 15px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    p{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 90%;
+
+    }
+
+    &.array-tags{
+        justify-content: flex-start;
+        padding: 5px 10px;
+    }
+}
+

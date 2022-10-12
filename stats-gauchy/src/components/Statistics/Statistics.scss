@@ -1,0 +1,68 @@
+@import './../../css/lib';
+
+.stats {
+    // background: #eee;
+    padding-top: 20px;
+    h2{
+        margin-bottom: 25px;
+        font-family: 'Poppins medium', sans-serif;
+        font-size: 18px;
+    }
+
+    &-container{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+    }
+
+
+}
+
+.stats-item{
+    padding: 20px 0px 15px 30px;
+    &-container{
+        height: 110px;
+        position: relative; 
+        display: grid;
+        grid-template-rows: 20px 1fr 20px;
+        padding-right: 30px;
+        &:after{
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: $soft-bg;
+            right: 0;
+            top: 0;
+            border-radius: 10px;
+         }   
+    }
+
+    &-title{
+        font-size: 16px;
+    }
+
+    &-result {
+        padding: 15px 0px;
+        font-size: 28px;
+        font-family: 'Poppins SemiBold', sans-serif;
+    }
+
+    &-mention{
+        
+    }
+    .gauge{
+        height: 15px;
+        width: 100%;
+        background: $main-grey;
+        border-radius: 20px;
+        overflow: hidden;
+
+        &-fill{
+            height: 100%;
+            background: $gauge-fill;
+            color: $gauge-text;
+            text-align: center;
+        }
+    }
+}

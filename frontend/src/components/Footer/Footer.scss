@@ -1,0 +1,44 @@
+.footer{
+  //height: 200px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: transparent;
+  padding: 0px 35px;
+  z-index: 1;
+  @media screen and (max-width: 768px) {
+    padding: 10px;
+  }
+}
+@mixin footerLogoSize($widthBig, $widthSmall, $mbSmall: 15px){
+  width: $widthBig;
+  &:nth-child(2) {
+    width: $widthSmall;
+    #footer-socodip-logo{
+      margin-bottom: $mbSmall;
+    }
+  }
+}
+.footer-logo{
+  @include footerLogoSize(400px, 300px);
+
+  @media screen and (max-width: 980px) {
+    @include footerLogoSize(300px, 250px);
+  }
+  @media screen and (max-width: 768px) {
+    @include footerLogoSize(250px, 200px);
+  }
+  @media screen and (max-width: 500px) {
+    @include footerLogoSize(220px, 175px);
+  }
+  @media screen and (max-width: 440px) {
+    @include footerLogoSize(180px, 140px, 0px);
+  }
+  @media screen and (max-width: 359px) {
+    @include footerLogoSize(120px, 100px, 0px);
+  }
+}

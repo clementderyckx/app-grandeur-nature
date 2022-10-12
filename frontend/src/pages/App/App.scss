@@ -1,0 +1,30 @@
+@import './../../css/lib';
+  
+  body{
+    width: 100%;
+    height: 100vh;
+    font-family: Aileron, sans-serif;
+    background: #FFF !important;
+  }
+
+  .space-around{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    height: fit-content;
+
+}
+.space-between{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: fit-content;
+}
+.text_error{
+  color: #f54828;
+  @include media-md-text();
+}
+.text_success{
+  color: green;
+  @include media-md-text();
+}

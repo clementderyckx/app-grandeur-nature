@@ -1,0 +1,33 @@
+@import './../../css/lib';
+
+.satisfaction-question{
+    width: 100%;
+    margin-bottom: 15px;
+    .question-label{
+        padding: 10px 0px;
+        @include media-md-text();
+    }
+    .checkbox-question{
+        width: 100%;
+
+        .answers{
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            @media screen and(max-width: 990px){
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+        
+        .checkbox-answer{
+            padding: 5px 20px;
+            width: fit-content;
+            @include media-sm-text();
+            @media screen and(max-width: 768px){
+                padding: 5px 10px;
+            }
+        }
+    }
+
+}
