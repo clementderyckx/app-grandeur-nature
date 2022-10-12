@@ -1,5 +1,5 @@
 import './SatisfactionQuestion.css';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CheckboxInput from "../CheckboxInput/CheckboxInput";
 import RadioInput from "../RadioInput/RadioInput";
 import RankInput from "../RankInput/RankInput";
@@ -23,19 +23,19 @@ export default function SatisfactionQuestion({question, number}) {
         const name = `question-${questionNumber}`;
         if(question.type === "checkbox"){
 
-            const element = question.answers.map((answer, index) => elements.push(<CheckboxInput answer={answer} htmlFor={htmlFor(index)} key={htmlFor(index)}name={name} value={value} updateValue={updateValue}/>));
+            question.answers.map((answer, index) => elements.push(<CheckboxInput answer={answer} htmlFor={htmlFor(index)} key={htmlFor(index)}name={name} value={value} updateValue={updateValue}/>));
     
         } else if(question.type === "radio"){
 
-            const element = question.answers.map((answer, index) => elements.push(<RadioInput answer={answer} htmlFor={htmlFor(index)} key={htmlFor(index)}name={name}/>));
+            question.answers.map((answer, index) => elements.push(<RadioInput answer={answer} htmlFor={htmlFor(index)} key={htmlFor(index)}name={name}/>));
     
         } else if(question.type === "rank"){
 
-            const element =elements.push(<RankInput question={question} htmlFor={`q${questionNumber}`}/>);
+            elements.push(<RankInput question={question} htmlFor={`q${questionNumber}`}/>);
 
         }else if(question.type === "text"){
 
-            const element =elements.push(<TextInput question={question} htmlFor={`q${questionNumber}`}/>);
+            elements.push(<TextInput question={question} htmlFor={`q${questionNumber}`}/>);
     
         }
         return elements;
