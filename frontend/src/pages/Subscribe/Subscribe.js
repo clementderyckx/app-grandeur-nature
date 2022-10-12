@@ -1,12 +1,12 @@
 import React from "react";
 import './form.css'
-import SubscriptionForm from "../../components/Subscriptionform/Subscriptionform";
+import SubscriptionForm from "../../components/SubscriptionForm/SubscriptionForm";
 import Footer from "../../components/Footer/Footer";
-import SubmitValidationMessage from "../../components/Subscriptionform/SubmitValidationMessage/SubmitValidationMessage";
+import SubmitValidationMessage from "../../components/SubscriptionForm/SubmitValidationMessage/SubmitValidationMessage";
 import {Fragment} from "react";
 import Utils from "../../classes/Utils";
 
-class Form extends React.Component {
+export default class Subscribe extends React.Component {
 
     constructor(props) {
         super(props);
@@ -71,4 +71,4 @@ class Form extends React.Component {
 
 }
 
-export default Form
+// export default Subscribe

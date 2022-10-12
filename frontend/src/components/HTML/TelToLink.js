@@ -1,3 +1,4 @@
+import React from 'react';
 function phoneNoFrPrefix(phone){
     const phoneArr = phone.split('');
     const newPhone = ["0"];

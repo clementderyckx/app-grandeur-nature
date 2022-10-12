@@ -1,5 +1,6 @@
 // Images
 import './Footer.css';
+import React from 'react';
 import logoSocodip from "../../imgs/logo-socodip2021.svg";
 import logoGrandeurNature from "../../imgs/logo-grandeur-nature.svg";
 

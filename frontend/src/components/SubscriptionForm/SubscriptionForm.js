@@ -38,22 +38,18 @@ class SubscriptionForm extends React.Component{
     }
 
     async postContact(contact){
-        const apiUrl = 'https://qrcode-checklist.herokuapp.com';
-        // const apiUrl = 'https://app.salon.socodip.fr';
-        // const apiUrl = 'http://localhost:8000';
-        console.log(`api url -> ${apiUrl}`)
+        const apiUrl = 'https://new-backend-api-url';
+        // const apiUrl = 'http://localhost:4009';
         return fetch(apiUrl + '/salon/contacts/create/', {method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-type': 'application/json' },
             body: JSON.stringify(contact)})
             .then((res) => res.json() )
             .then(response => {
-                console.log('response')
-                console.log(response)
                 return response.status
             })
             .catch(e => {
-                alert(e);
                 console.log(e)
+                alert('Une erreur es survenue lors de la soumission du formulaire, veuillez reesayer dans quelques instants');
             });
     }
 
@@ -104,11 +100,6 @@ class SubscriptionForm extends React.Component{
         ValidationForm.postCodeOnly(inputs.postCode, errors)
         ValidationForm.validPhoneInput(inputs.phone, errors);
 
-        console.log(errors)
-
-        // Cheks if phone inputs respects french phoneNumber Values
-
-
         return errors;
     }
 
@@ -152,23 +143,12 @@ class SubscriptionForm extends React.Component{
         if (isValid){
             this.setState({ inSubmit: true })
             const contact = new Contact(this.state);
-            const result = this.postContact(contact)
+            // GETTING RESULTS
+            this.postContact(contact)
                 .then(postResult => {
-                    if(postResult === 200) {
-                        this.returnSubmit(true, {
-                            contact: contact,
-                            response: postResult
-                        })
-                    } else {
-                        this.returnSubmit(false, {
-                            contact: contact,
-                            response: postResult
-                        })
-                    }
+                    (postResult === 200) ? this.returnSubmit(true, {contact: contact,response: postResult }) : this.returnSubmit(false, { contact: contact, response: postResult })   
                 })
                 .catch(e => console.log(e));
-
-            console.log(JSON.stringify(contact))
         }
 
     }

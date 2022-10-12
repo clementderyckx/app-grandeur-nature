@@ -4,6 +4,9 @@
 body{
   background: url("./../../imgs/bg.jpg") center / cover no-repeat;
 }
+.App{
+  width: 100% !important;
+}
 #root{
   display: flex;
   flex-direction: column;

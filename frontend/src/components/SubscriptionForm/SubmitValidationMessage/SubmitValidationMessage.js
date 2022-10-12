@@ -1,6 +1,6 @@
 import MailToLink from "../../HTML/MailToLink";
 import TelToLink from "../../HTML/TelToLink";
-import {Fragment} from "react";
+import React from "react";
 import contacts from "../../../datas/contacts";
 // Stylesheet
 import './submitValidationMessage.css';
