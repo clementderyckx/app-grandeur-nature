@@ -1,0 +1,4 @@
+@mixin default-link($color: #000){
+    text-decoration: none;
+    color: $color;
+}

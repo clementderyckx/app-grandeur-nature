@@ -1,0 +1,4 @@
+@mixin square-max-size($value){
+    max-width: $value;
+    max-height: $value;
+}

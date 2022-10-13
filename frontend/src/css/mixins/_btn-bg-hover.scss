@@ -1,0 +1,8 @@
+@mixin btn-bg-hover{
+    background-color: $main-color;
+    transition: background 0.15s ease-in;
+    &:hover{
+        background: darken($main-color, 10%);
+        transition: background 0.15s ease-out;
+    }
+}

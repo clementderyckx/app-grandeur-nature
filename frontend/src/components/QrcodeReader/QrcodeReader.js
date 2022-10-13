@@ -1,7 +1,6 @@
 import './QrcodeReader.css';
 import { Html5Qrcode } from "html5-qrcode";
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 export default function QrcodeReader() {
 
@@ -14,19 +13,17 @@ export default function QrcodeReader() {
             const isValid = validateUrl(decodedText);
             if(isValid === true) {
                 const id = getIdFromUrl(decodedText);
-                window.location.href = `https://scanner.socodip.fr/check-contact/${id}`;
-                // window.location.href = `https://qrcode-scanner-gauchy.herokuapp.com/check-contact/${id}`;
-                // window.location.href = `http://localhost:3000/check-contact/${id}`;
+                // window.location.href = `https://newApiUrl/check-contact/${id}`;
+                window.location.href = `http://localhost:3000/check-contact/${id}`;
             } else {
-                window.location.href = `https://scanner.socodip.fr/check-contact/ab12cd34ab12cd34ab12cd34`;
-                // window.location.href = `https://qrcode-scanner-gauchy.herokuapp.com/check-contact/ab12cd34ab12cd34ab12cd34`;
-                // window.location.href = `http://localhost:3000/check-contact/ab12cd34ab12cd34ab12cd34`;
+                // window.location.href = `https://newApiUrl/check-contact/ab12cd34ab12cd34ab12cd34`;
+                window.location.href = `http://localhost:3000/check-contact/ab12cd34ab12cd34ab12cd34`;
             }
         }
 
     }
 
-    const qrcodeConfig = { fps: 10, qrbox: { width:250, height:250 } };
+    const qrcodeConfig = { fps: 5, qrbox: { width:250, height:250 } };
     useEffect(() => {
         const html5Qrcode = new Html5Qrcode("reader");
         Html5Qrcode.getCameras().then(devices => {

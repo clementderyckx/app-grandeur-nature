@@ -41,7 +41,7 @@ export default function Statistics({type, title}) {
               
             <div className="stats-item" id="subscribers">
               <div className="stats-item-container">
-                <h3 className="stats-item-title">{(type === "subscribers") ? "Inscrits" : "Présents"}</h3>
+                <h3 className="stats-item-title">Inscrits</h3>
                 <p className="stats-item-result">{stats.subscribers}</p>
                 <div className="stats-item-mention">
                   <div className="gauge">

@@ -25,16 +25,19 @@ export default function CheckContact(){
             updateContact(result);
         } else if (status === 400 || status === 404){
             updateContentClassName("content full-height")
+        } else {
+            updateContentClassName("content full-height")
         }
     }
 
 
     const fetchUser = () => {
-        // fetch(`http://localhost:4009/salon/pass/${id}`)
-        fetch(`https://salon-gauchy.herokuapp.com/salon/pass/${id}`)
+        fetch(`http://localhost:4009/salon/pass/${id}`)
+        // fetch(`https://newAPIUrl/salon/pass/${id}`)
         .then(res => res.json())
         .then(response => { trimResponse(response) })
-        .then(() => window.setTimeout(() => window.location.href = 'https://scanner.socodip.fr/', 2000))
+        .then(() => window.setTimeout(() => window.location.href = 'http://localhost:3000/qrcode-scanner', 2000))
+        .catch(err => window.setTimeout(() => window.location.href = 'http://localhost:3000/qrcode-scanner', 2000))
     }
 
     useEffect(() => {

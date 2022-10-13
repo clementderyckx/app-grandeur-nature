@@ -4,6 +4,8 @@ import React from 'react';
 import SatisfasctionForm from '../../components/SatisfasctionForm/SatisfasctionForm';
 import Subscribe from '../Subscribe/Subscribe';
 import NotFound from '../../components/NotFound/NotFound';
+import QrcodeReader from '../../components/QrcodeReader/QrcodeReader.js';
+import CheckContact from '../../components/CheckContact/CheckContact';
 import { Routes, Route } from 'react-router-dom';
 function App() {
     return (
@@ -12,8 +14,9 @@ function App() {
                 <Route path="/" element={<Subscribe />} />
                 <Route path='/questionnaire-satisfaction' element={<SatisfasctionForm />}/>
                 <Route path='/questionnaire-satisfaction/:id' element={<SatisfasctionForm />}/>
+                <Route path='/qrcode-scanner' element={<QrcodeReader/>}/>
+                <Route path='/qrcode-scanner/check-contact/:id' element={<CheckContact/>}/>
                 {/* <Route path='/admin' element={<AdminInterface />}/> */}
-                {/* <Route path='/qrcode-scanner' element={<QrcodeReader/>}/> */}
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
         </div>

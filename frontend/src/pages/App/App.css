@@ -109,4 +109,13 @@ body {
   .text_success {
     font-size: 12px;
   }
+}
+
+.full-wh {
+  height: 100%;
+  width: 100%;
+}
+
+.bgBlack {
+  background-color: #000;
 }/*# sourceMappingURL=App.css.map */

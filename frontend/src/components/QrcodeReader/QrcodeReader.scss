@@ -1,0 +1,12 @@
+.App{
+    background: #eee;
+    overflow: hidden;
+    @media screen and (min-width: 768px){
+        background: #000;
+    }
+}
+
+.qrcode-reader{
+    width: 100%;
+    @include dnone-on-big-screen();
+}

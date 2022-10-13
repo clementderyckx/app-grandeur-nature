@@ -1,0 +1,5 @@
+@mixin dnone-on-big-screen($size: 768px){
+    @media screen and (min-width: $size){
+        display: none;
+    }
+}
