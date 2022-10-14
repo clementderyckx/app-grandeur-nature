@@ -1,5 +1,5 @@
-const Contact = require(`${__dirname}/../lib/classes/Contact.js`);
-const db = require(`${__dirname}/../lib/db/db.js`);
+const Contact = require(`${__dirname}/../../lib/classes/Contact.js`);
+const db = require(`${__dirname}/../../lib/db/db.js`);
 
 ( async () => {
 

@@ -13,10 +13,10 @@ export default function QrcodeReader() {
             const isValid = validateUrl(decodedText);
             if(isValid === true) {
                 const id = getIdFromUrl(decodedText);
-                // window.location.href = `https://newApiUrl/check-contact/${id}`;
+                // window.location.href = `https://newAppUrl/check-contact/${id}`;
                 window.location.href = `http://localhost:3000/check-contact/${id}`;
             } else {
-                // window.location.href = `https://newApiUrl/check-contact/ab12cd34ab12cd34ab12cd34`;
+                // window.location.href = `https://newAppUrl/check-contact/ab12cd34ab12cd34ab12cd34`;
                 window.location.href = `http://localhost:3000/check-contact/ab12cd34ab12cd34ab12cd34`;
             }
         }
@@ -51,7 +51,7 @@ export default function QrcodeReader() {
  * @param {*} url 
  */
 function validateUrl(url){
-    const apiUrls = ['https://qrcode-checklist.herokuapp.com/salon/contacts/check/','https://qrcode-checklist.herokuapp.com/contact/check/','https://qrcode-checklist.herokuapp.com/check/','https://qrcode-checklist.herokuapp.com/contacts/check/', 'https://qrcode-checklist.herokuapp.com//salon/pass/','https://salon-gauchy.herokuapp.com/salon/pass/', 'https://salon-gauchy.herokuapp.com//salon/pass/'];
+    const apiUrls = ['https://app-salon-socodip.herokuapp.com/salon/pass/'];
     let isValid = false;
     for(let apiUrl of apiUrls){
         if(url.startsWith(apiUrl)){

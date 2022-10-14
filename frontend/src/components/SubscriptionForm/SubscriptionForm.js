@@ -17,8 +17,6 @@ class SubscriptionForm extends React.Component{
             email: '',
             phone: '',
             city: '',
-            // delete or manage on posting
-            // department: '',
             postCode: 0,
             isPresent: 'false',
         }
@@ -38,7 +36,7 @@ class SubscriptionForm extends React.Component{
     }
 
     async postContact(contact){
-        const apiUrl = 'https://new-backend-api-url';
+        const apiUrl = 'https://app-salon-socodip.herokuapp.com';
         // const apiUrl = 'http://localhost:4009';
         return fetch(apiUrl + '/salon/contacts/create/', {method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-type': 'application/json' },

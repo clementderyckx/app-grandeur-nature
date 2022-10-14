@@ -29,13 +29,13 @@ async function sendBadgeByMail(badge){
 
         Cordialement,
 
-        Perrine
-        Assistante commerciale
+        Clément
+        Développeur WEB
         S.A.S SOCODIP
         03.28.43.16.16`;
 
     let mail = await transporter.sendMail({
-        from: 'SOCODIP <salon.socodip@gmail.com>',
+        from: 'Clément DERYCKX <clement.deryckx@outlook.com>',
         // to: 'clement.deryckx@outlook.com',
         to: Utils.clearMail(badge.email),
         subject: "Votre badge d'entrée salon Grandeur Nature",

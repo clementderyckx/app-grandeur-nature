@@ -18,7 +18,7 @@ function newContact(name, company, phone, email, postCode){
 
 (async (    ) => {
 
-    db.connect({ source: 'local'});
+    db.connect({ source: 'prod'});
 
     const results = []
 

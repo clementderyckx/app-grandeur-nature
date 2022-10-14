@@ -13,7 +13,7 @@ class Badge{
 
         this.fileName = `badge_${Utils.clearString(contact.company).toLowerCase()}_${Utils.clearString(contact.lastname).toLowerCase()}_${Utils.clearString(contact.firstname).toLowerCase()}.pdf`;
         this.localUrl = `${__dirname}/../../files/badges/${this.fileName}`;
-        this.url = `http://files.socodip.fr/salon-gauchy/badges/${this.fileName}`;
+        this.url = `${process.env.FILEAPI}/salon-gauchy/badges/${this.fileName}`;
     }
 
 

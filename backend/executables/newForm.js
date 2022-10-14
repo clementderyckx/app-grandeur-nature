@@ -1,10 +1,10 @@
-const questions = require(`${__dirname}/datas.js`);
+const questions = require(`${__dirname}/../others/datas.js`);
 const Question = require(`${__dirname}/../lib/classes/Question.js`);
 const SatisfactionForm = require(`${__dirname}/../lib/classes/SatisfactionForm.js`);
 const db = require(`${__dirname}/../lib/db/db.js`);
 
 (async() => {
-    db.connect({ source: 'local'});
+    db.connect({ source: 'prod'});
 
     const satisfactionForm = new SatisfactionForm({name: 'Questionnaire de satisfaction - Salon Grandeur Nature', questions: [] });
     const newForm = await satisfactionForm.save();

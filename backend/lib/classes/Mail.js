@@ -69,7 +69,7 @@ class Mail{
         });
     
         let mail = await transporter.sendMail({
-            from: 'SOCODIP <salon.socodip@gmail.com>',
+            from: 'Clément DERYCKX <clement.deryckx@outlook.com>',
             to: to,
             subject: subject,
             text: message,

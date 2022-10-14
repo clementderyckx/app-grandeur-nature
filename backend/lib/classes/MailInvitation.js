@@ -39,13 +39,13 @@ class MailInvitation {
     
                     Cordialement,
     
-                    Perrine
-                    Assistante commerciale
+                    Clément
+                    Développeur WEB
                     S.A.S SOCODIP
                     03.28.43.16.16`;
     
         const smtpMail = {
-            sender: {name: 'SOCODIP', email: "info@socodip.fr"},
+            sender: {name: 'Clément DERYCKX', email: "clement.deryckx@outlook.com"},
             to: [{ name: `${this.contact.lastname} ${this.contact.firstname}`, email: this.contact.email }],
             subject: "Votre badge d'entrée salon Grandeur Nature",
             textContent : mail,
@@ -74,15 +74,15 @@ class MailInvitation {
                      
                     Cordialement,
                      
-                    Perrine
-                    Assistante commerciale
+                    Clément
+                    Développeur WEB
                     S.A.S SOCODIP
                     03.28.43.16.16`;
 
         const smtpMail = {
-            sender: {name: 'SOCODIP', email: "info@socodip.fr"},
+            sender: {name: 'Clément DERYCKX', email: "clement.deryckx@outlook.com"},
             to: [{ name: `${this.contact.lastname} ${this.contact.firstname}`, email: this.contact.email }],
-            subject: "Votre inscription a bien été prise en compte",
+            subject: "Votre inscription au salon a bien été prise en compte",
             textContent : mail,
         }
 

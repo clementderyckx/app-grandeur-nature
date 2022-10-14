@@ -2,7 +2,7 @@ import React from "react";
 
 const source = 'prod';
 export const formId = (source === 'local') ? '6328afb1f5b93e7df39aee73' : '6328affa6931a17fa3aa404b';
-export const apiUrl = (source === 'local') ? 'http://localhost:4009' : 'https://test-case-api/';
+export const apiUrl = (source === 'local') ? 'http://localhost:4009' : 'https://app-salon-socodip.herokuapp.com';
 
 /**
  * GENERATES AN ERROR ELEMENT ON THE SPECIFIED QUESTION ON THE DOM

@@ -12,7 +12,7 @@ const [date, time] = Utils.getFrDate();
 (async () => {
     try{
         const addNewContacts = await utilities.duplicateContacts();
-        const report = await Report.generatesReport(200, 'Duplicate database to local point', addNeContacts);
+        const report = await Report.generatesReport(200, 'Duplicate database to local point', addNewContacts);
         console.log(report);
         return addNewContacts;
     } catch(err) {

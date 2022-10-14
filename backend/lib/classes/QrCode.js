@@ -5,7 +5,7 @@ const Utils = require('./Utils');
 class QrCode {
     constructor(options) {
         this.id = options.id;
-        this.url = `${process.env.NEWAPPURL}/salon/pass/${options.id}`;
+        this.url = `${process.env.APPURL}/salon/pass/${options.id}`;
         this.filesDir = `${__dirname}/../../docs/files`;
 
         this.recipient = {
