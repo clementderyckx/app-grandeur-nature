@@ -1,7 +1,7 @@
 import './App.css';
 import "@fontsource/aileron";
 import React from 'react';
-import SatisfasctionForm from '../../components/SatisfasctionForm/SatisfasctionForm';
+import SatisfactionForm from '../../components/SatisfactionForm/SatisfactionForm';
 import Subscribe from '../Subscribe/Subscribe';
 import NotFound from '../../components/NotFound/NotFound';
 import QrcodeReader from '../../components/QrcodeReader/QrcodeReader.js';
@@ -12,8 +12,8 @@ function App() {
         <div className="App">
             <Routes>
                 <Route path="/" element={<Subscribe />} />
-                <Route path='/questionnaire-satisfaction' element={<SatisfasctionForm />}/>
-                <Route path='/questionnaire-satisfaction/:id' element={<SatisfasctionForm />}/>
+                <Route path='/questionnaire-satisfaction' element={<SatisfactionForm />}/>
+                <Route path='/questionnaire-satisfaction/:id' element={<SatisfactionForm />}/>
                 <Route path='/qrcode-scanner' element={<QrcodeReader/>}/>
                 <Route path='/qrcode-scanner/check-contact/:id' element={<CheckContact/>}/>
                 {/* <Route path='/admin' element={<AdminInterface />}/> */}

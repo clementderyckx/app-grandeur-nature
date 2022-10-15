@@ -1,11 +1,11 @@
 import React from "react";
 import './subscriptionForm.css';
 import Input from "../HTML/Input/Input";
-// import SelectInput from "../Form/SelectInput";
 import Contact from "../../classes/Contact";
 import ValidationForm from "../../classes/ValidationForm";
+import { appConfig } from "../../config";
 
-class SubscriptionForm extends React.Component{
+export default class SubscriptionForm extends React.Component{
 
     constructor(props) {
         super(props);
@@ -46,7 +46,6 @@ class SubscriptionForm extends React.Component{
             company: document.querySelector('form[name="subscription-form"] input[name="company"]'),
             email: document.querySelector('form[name="subscription-form"] input[name="email"]'),
             phone: document.querySelector('form[name="subscription-form"] input[name="phone"]'),
-            // department: document.querySelector('Form[name="subscription-form"] select[name="department"]'),
             postCode: document.querySelector('form[name="subscription-form"] input[name="postCode"]'),
         }
     }
@@ -114,9 +113,7 @@ class SubscriptionForm extends React.Component{
         return (errors.length === 0)
     }
     async postContact(contact){
-        // const apiUrl = 'https://app-salon-socodip.herokuapp.com';
-        const apiUrl = 'http://localhost:4009';
-        return fetch(apiUrl + '/salon/contacts/create/', {method: 'POST',
+        return fetch(appConfig.apiUrl + '/salon/contacts/create/', {method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-type': 'application/json' },
             body: JSON.stringify(contact)})
             .then((res) => res.json() )
@@ -185,5 +182,3 @@ class SubscriptionForm extends React.Component{
     }
 
 }
-
-export default SubscriptionForm;

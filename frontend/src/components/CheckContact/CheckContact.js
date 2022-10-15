@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as LogoSocodip } from './../../imgs/logo-socodip2021.svg';
 import { ReactComponent as LogoGrandeurNature } from './../../imgs/logo-grandeur-nature.svg';
 import ContactShow from '../ContactShow/ContactShow';
-const apiUrl = 'https://app-salon-socodip.herokuapp.com';
+import { appConfig } from '../../config';
 
 export default function CheckContact(){
 
@@ -33,12 +33,11 @@ export default function CheckContact(){
 
 
     const fetchUser = () => {
-        // fetch(`http://localhost:4009/salon/pass/${id}`)
-        fetch(`${apiUrl}/salon/pass/${id}`)
+        fetch(`${appConfig.apiUrl}/salon/pass/${id}`)
         .then(res => res.json())
         .then(response => { trimResponse(response) })
-        .then(() => window.setTimeout(() => window.location.href = 'http://localhost:3000/qrcode-scanner', 2000))
-        .catch(err => window.setTimeout(() => window.location.href = 'http://localhost:3000/qrcode-scanner', 2000))
+        .then(() => window.setTimeout(() => window.location.href = `${appConfig.appUrl}/qrcode-scanner`, 2000))
+        .catch(err => window.setTimeout(() => window.location.href = `${appConfig.appUrl}/qrcode-scanner`, 2000))
     }
 
     useEffect(() => {

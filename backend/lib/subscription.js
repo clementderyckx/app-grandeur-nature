@@ -1,16 +1,14 @@
 const db = require(`${__dirname}/db/contact`);
 const Contact = require(`${__dirname}/classes/Contact`);
 const QrCode = require(`${__dirname}/classes/QrCode`);
+// const Badge = require(`${__dirname}/classes/Badge`);
 const MailInvitation = require(`${__dirname}/classes/MailInvitation`);
 const Response = require(`${__dirname}/classes/Response`);
 const mongoose = require('mongoose');
 
-// const Badge = require(`${__dirname}/classes/Badge`);
-
 async function createSubscription(req) {
     const contact = new Contact(req.body);
     const savedResponse = await contact.save();
-    // console.log(savedResponse);
     if(savedResponse.status === 200){
         const notion = await contact.insertToNotion();
         // const qrCode = new QrCode(contact);
@@ -18,7 +16,7 @@ async function createSubscription(req) {
         // const badge = new Badge(qrCode);
         // await badge.generateBadge();
         const mail = new MailInvitation(contact);
-            // mail.sendMail();
+            mail.sendMail();
         console.log(`subscription process ended successfully`);
         return savedResponse;
     } else {

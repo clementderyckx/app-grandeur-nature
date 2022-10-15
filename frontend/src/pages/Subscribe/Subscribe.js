@@ -21,8 +21,6 @@ export default class Subscribe extends React.Component {
 
     handleSubmit(value, response){
         this.setState({submitted: value})
-        console.log('res from handleSubmit form page :');
-        console.log(response);
         if(value === true && response.status === 200) {
             this.setState({response: 200, contact: response.result})
         } else if(response.status === 400){

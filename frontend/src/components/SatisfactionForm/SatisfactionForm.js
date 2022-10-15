@@ -1,4 +1,4 @@
-import './SatisfasctionForm.css';
+import './SatisfactionForm.css';
 import {ReactComponent as LogoGrandeurNature} from './../../imgs/logo-grandeur-nature.svg';
 import {ReactComponent as LogoSocodip} from './../../imgs/logo-socodip2021.svg';
 import {ReactComponent as LogoGauchy} from './../../imgs/logo-gauchy.svg';
@@ -6,10 +6,10 @@ import SatisfactionQuestion from '../SatisfactionQuestion/SatisfactionQuestion';
 // import questions from './questions';
 import Button from '../Button/Button';
 import React, { useState, useEffect } from 'react';
-import {apiUrl, formId, getContactAndQuestions, getAnswers, validateForm, postAnswers, getSubmissionMessage } from './functions';
+import {getContactAndQuestions, getAnswers, validateForm, postAnswers, getSubmissionMessage } from './functions';
 
 
-export default function SatisfasctionForm() {
+export default function SatisfactionForm() {
 
   const [questions, updateQuestions] = useState([]);
   const [contact, updateContact] = useState({});
@@ -25,7 +25,7 @@ export default function SatisfasctionForm() {
     const isValid = validateForm(answers);
     if(isValid){
       updateStatus('onSubmit')
-      postAnswers(apiUrl, formId, contact, answers, updateStatus)
+      postAnswers(contact, answers, updateStatus)
     } else {
       return;
     }
@@ -69,7 +69,7 @@ export default function SatisfasctionForm() {
         {(message === "" && (status === "default" || status === "onSubmit")) ? 
           <form action="#" className="form">
             <div className="form-container">
-              {questions.map((question, index) => <SatisfactionQuestion question={question} number={index+1} />)}
+              {questions.map((question, index) => <SatisfactionQuestion question={question} number={index+1} key={`question-${index+1}`} />)}
               
               {(status === "onSubmit") ? <div><p>Questionnaire en cours d'envoie...</p></div> : null}
               <Button text={"Envoyer"} actionType={"main"} handleClick={submit}/>

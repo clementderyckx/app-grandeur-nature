@@ -1,30 +1,27 @@
+import { appConfig } from "../../config";
 import React from "react";
-
-const source = 'prod';
-export const formId = (source === 'local') ? '6328afb1f5b93e7df39aee73' : '6328affa6931a17fa3aa404b';
-export const apiUrl = (source === 'local') ? 'http://localhost:4009' : 'https://app-salon-socodip.herokuapp.com';
 
 /**
  * GENERATES AN ERROR ELEMENT ON THE SPECIFIED QUESTION ON THE DOM
  * @param {String} id 
  */
 function generatesError(id) {
-if(!document.querySelector(`#question${id} .form-error`)){
-    const error = document.createElement('div');
-    error.className = "form-error";
-    const errorText = document.createElement('p');
-    errorText.className = "text_error";
-    errorText.innerText = "Merci de spécifier une réponse pour cette question.";
-    error.appendChild(errorText);
-    document.querySelector(`#question${id}`).appendChild(error);
-}
+    if(!document.querySelector(`#question${id} .form-error`)){
+        const error = document.createElement('div');
+        error.className = "form-error";
+        const errorText = document.createElement('p');
+        errorText.className = "text_error";
+        errorText.innerText = "Merci de spécifier une réponse pour cette question.";
+        error.appendChild(errorText);
+        document.querySelector(`#question${id}`).appendChild(error);
+    }
 }
 
 // GETTING CONTACT INFOS
 export function getContactAndQuestions(updateContact, updateQuestions, updateMessage) {
     const url = document.location.href.split('/');
     const contactId = url[url.length - 1];
-    fetch(`${apiUrl}/salon/satisfaction/form/${formId}/check/${contactId}`, {method: 'GET'}).then(res => res.json()).then( response  => {
+    fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/check/${contactId}`, {method: 'GET'}).then(res => res.json()).then( response  => {
         const contact = response.result[0];
         if(response.status === 200){
         updateContact(contact)
@@ -38,7 +35,7 @@ export function getContactAndQuestions(updateContact, updateQuestions, updateMes
 }
 
 function getQuestions (updateQuestions) {
-    fetch(`${apiUrl}/salon/satisfaction/form/${formId}/questions/`).then(res => res.json()).then( response => {
+    fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/questions/`).then(res => res.json()).then( response => {
         updateQuestions(response.result);
     })
 }
@@ -93,7 +90,7 @@ export function validateForm(answers){
 }
 
 export function postAnswers(contact, answers, updateStatus){
-    fetch(`${apiUrl}/salon/satisfaction/form/${formId}/register/`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({formId: formId, contactId: contact._id, answers: answers})})
+    fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/register/`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({formId: appConfig.satisfactionFormId, contactId: contact._id, answers: answers})})
         .then(res => res.json()).then(res => {
             // UPDATE STATUS AVEC LA REPONSE
             (res.status === 200) ? updateStatus('submitted') : updateStatus('submitError');

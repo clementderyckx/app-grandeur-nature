@@ -1,6 +1,7 @@
 import './QrcodeReader.css';
 import { Html5Qrcode } from "html5-qrcode";
 import { useEffect } from 'react';
+import { appConfig } from '../../config';
 
 export default function QrcodeReader() {
 
@@ -13,11 +14,9 @@ export default function QrcodeReader() {
             const isValid = validateUrl(decodedText);
             if(isValid === true) {
                 const id = getIdFromUrl(decodedText);
-                // window.location.href = `https://newAppUrl/check-contact/${id}`;
-                window.location.href = `http://localhost:3000/check-contact/${id}`;
+                window.location.href = `${appConfig.appUrl}/check-contact/${id}`;
             } else {
-                // window.location.href = `https://newAppUrl/check-contact/ab12cd34ab12cd34ab12cd34`;
-                window.location.href = `http://localhost:3000/check-contact/ab12cd34ab12cd34ab12cd34`;
+                window.location.href = `${appConfig.appUrl}/check-contact/ab12cd34ab12cd34ab12cd34`;
             }
         }
 
@@ -51,17 +50,12 @@ export default function QrcodeReader() {
  * @param {*} url 
  */
 function validateUrl(url){
-    const apiUrls = ['https://app-salon-socodip.herokuapp.com/salon/pass/'];
     let isValid = false;
-    for(let apiUrl of apiUrls){
-        if(url.startsWith(apiUrl)){
-            // window.alert(' ca matche baby !!! \n' + apiUrl + ' - ' + url)
-            isValid = true
-        }
+    if(url.startsWith(`${appConfig.apiUrl}/salon/pass/`)){
+        isValid = true;
     }
 
     return isValid
-    
 }
 
 /**
@@ -75,5 +69,5 @@ function getIdFromUrl (url){
 }
 
 function onScanFailure(){
-
+    console.log('Any QrCode has been detected. Still scanning...');
 }

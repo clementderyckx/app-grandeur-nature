@@ -219,6 +219,7 @@ body {
 }
 
 .form {
+  display: block;
   width: 100%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -277,4 +278,4 @@ body {
   .form-submission-message-container {
     font-size: 12px;
   }
-}/*# sourceMappingURL=SatisfasctionForm.css.map */
+}/*# sourceMappingURL=SatisfactionForm.css.map */
