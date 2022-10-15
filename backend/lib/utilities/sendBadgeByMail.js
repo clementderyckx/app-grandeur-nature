@@ -1,4 +1,6 @@
-require('dotenv').config({path: `${__dirname}/../../.env`});
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path: `${__dirname}/../.env`});
+}
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const Utils = require(`${__dirname}/../classes/Utils.js`);

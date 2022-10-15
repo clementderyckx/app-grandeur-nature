@@ -1,4 +1,6 @@
-require('dotenv').config({path: `${__dirname}/../.env`});
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path: `${__dirname}/../.env`});
+}
 const Contact = require(`${__dirname}/classes/Contact.js`);
 const Notion = require(`${__dirname}/classes/Notion.js`);
 const Response = require(`${__dirname}/classes/Response.js`);

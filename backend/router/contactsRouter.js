@@ -10,18 +10,13 @@ const contactsRouter = express.Router();
 contactsRouter.post('/create/', (req, res, next) => {
 
     subscription.createSubscription(req).then((result) => {
-        if(result === 'contact is already present in the database') {
-            res.send(result);
-        } else {
-            res.send(result)
-        }
-
+        console.log(result);
+        res.send(result);
     }).catch((e) => {
         console.log('an error occurred : ' + e.message)
-        return 500
+        return new Response(500, 'An error occured on saving contacts, please try again in few moments.');
     });
 
-    next();
 });
 
 // GETS ALL CONTACTS THAT HAS SUBSCRIBES TO THE EVENT

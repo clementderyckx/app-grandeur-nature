@@ -1,4 +1,6 @@
-require('dotenv').config({path: `${__dirname}/../../.env`});
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path: `${__dirname}/../../.env`});
+}
 const fs = require('fs');
 const QRcode = require('qrcode-svg');
 const Utils = require('./Utils');

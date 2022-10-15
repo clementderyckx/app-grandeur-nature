@@ -1,4 +1,6 @@
-require('dotenv').config({path: __dirname+'/../../.env'});
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path: `${__dirname}/../.env`});
+}
 const mongoose = require("mongoose");
 function connect({ source }){
     if(!source || source === "prod"){

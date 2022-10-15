@@ -9,21 +9,20 @@ const mongoose = require('mongoose');
 
 async function createSubscription(req) {
     const contact = new Contact(req.body);
-    console.log(contact);
-    const save = await contact.save();
-
-    if(!save.message){
+    const savedResponse = await contact.save();
+    // console.log(savedResponse);
+    if(savedResponse.status === 200){
         const notion = await contact.insertToNotion();
         // const qrCode = new QrCode(contact);
         // const generateQrCode = await qrCode.generate();
         // const badge = new Badge(qrCode);
         // await badge.generateBadge();
         const mail = new MailInvitation(contact);
-            mail.sendMail();
+            // mail.sendMail();
         console.log(`subscription process ended successfully`);
-        return contact;
+        return savedResponse;
     } else {
-        return save;
+        return savedResponse;
     }
 }
 

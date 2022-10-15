@@ -4,7 +4,6 @@ import SubscriptionForm from "../../components/SubscriptionForm/SubscriptionForm
 import Footer from "../../components/Footer/Footer";
 import SubmitValidationMessage from "../../components/SubscriptionForm/SubmitValidationMessage/SubmitValidationMessage";
 import {Fragment} from "react";
-import Utils from "../../classes/Utils";
 
 export default class Subscribe extends React.Component {
 
@@ -20,12 +19,14 @@ export default class Subscribe extends React.Component {
 
     }
 
-    handleSubmit(value, res){
+    handleSubmit(value, response){
         this.setState({submitted: value})
-        if(value === true && res.response === 200) {
-            this.setState({response: 200, contact: res.contact})
-        } else if(res.response === 400){
-            this.setState({response: 400, error: 1, contact: res.contact})
+        console.log('res from handleSubmit form page :');
+        console.log(response);
+        if(value === true && response.status === 200) {
+            this.setState({response: 200, contact: response.result})
+        } else if(response.status === 400){
+            this.setState({response: 400, error: 1, contact: response.result})
         }
         else {
             this.setState({error: 2})
@@ -70,5 +71,3 @@ export default class Subscribe extends React.Component {
 
 
 }
-
-// export default Subscribe

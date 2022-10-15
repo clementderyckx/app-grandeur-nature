@@ -102,7 +102,10 @@ body{
 
 .content-container{
   @include contentContainer();
+  position: relative;
   z-index: 10;
-
+}
+footer{
+  z-index: 1;
 }
 

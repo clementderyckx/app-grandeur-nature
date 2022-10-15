@@ -1,6 +1,7 @@
 const ContactModel = require(`${__dirname}/../db/contact`);
 const Utils = require(`${__dirname}/Utils`);
 const Notion = require(`${__dirname}/Notion.js`);
+const Response = require(`${__dirname}/Response.js`);
 
 class Contact {
     constructor(contact, options) {
@@ -23,14 +24,10 @@ class Contact {
         const isPresent = await this.checkIfPresent();
         if(isPresent === false) {
             const contact = new ContactModel(this);
-            console.log('contact model :');
-            console.log(contact);
             const result = await contact.save();
-            return result;
+            return new Response(200, 'Contact has been saved successfully', result);
         } else {
-            return {
-                message: 'contact is already present in the database'
-            }
+            return new Response(400, 'contact is already present in the database', {})
         }
     }
 

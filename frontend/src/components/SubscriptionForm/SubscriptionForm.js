@@ -35,27 +35,6 @@ class SubscriptionForm extends React.Component{
         });
     }
 
-    async postContact(contact){
-        const apiUrl = 'https://app-salon-socodip.herokuapp.com';
-        // const apiUrl = 'http://localhost:4009';
-        return fetch(apiUrl + '/salon/contacts/create/', {method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-type': 'application/json' },
-            body: JSON.stringify(contact)})
-            .then((res) => res.json() )
-            .then(response => {
-                return response.status
-            })
-            .catch(e => {
-                console.log(e)
-                alert('Une erreur es survenue lors de la soumission du formulaire, veuillez reesayer dans quelques instants');
-            });
-    }
-
-    returnSubmit(value, res){
-        this.props.submit(value, res);
-    }
-
-
     /**
      * Return a classified object with each inputs
      * @returns {{firstname: Element, phone: Element, company: Element, department: Element, email: Element, lastname: Element}}
@@ -134,6 +113,25 @@ class SubscriptionForm extends React.Component{
 
         return (errors.length === 0)
     }
+    async postContact(contact){
+        // const apiUrl = 'https://app-salon-socodip.herokuapp.com';
+        const apiUrl = 'http://localhost:4009';
+        return fetch(apiUrl + '/salon/contacts/create/', {method: 'POST',
+            headers: { 'Accept': 'application/json', 'Content-type': 'application/json' },
+            body: JSON.stringify(contact)})
+            .then((res) => res.json() )
+            .then(response => {
+                return response
+            })
+            .catch(err => {
+                console.log(err)
+                alert(err.message);
+            });
+    }
+
+    returnSubmit(value, response){
+        this.props.submit(value, response);
+    }
 
     submit(event){
         event.preventDefault();
@@ -144,7 +142,7 @@ class SubscriptionForm extends React.Component{
             // GETTING RESULTS
             this.postContact(contact)
                 .then(postResult => {
-                    (postResult === 200) ? this.returnSubmit(true, {contact: contact,response: postResult }) : this.returnSubmit(false, { contact: contact, response: postResult })   
+                    (postResult.status === 200) ? this.returnSubmit(true, postResult) : this.returnSubmit(false, postResult)   
                 })
                 .catch(e => console.log(e));
         }

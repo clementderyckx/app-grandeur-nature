@@ -1,4 +1,6 @@
-require('dotenv').config({path: `${__dirname}/../.env`});
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config({path: `${__dirname}/../../.env`});
+}
 const puppeteer = require("puppeteer");
 const fs = require('fs');
 const Utils = require('./Utils.js');
