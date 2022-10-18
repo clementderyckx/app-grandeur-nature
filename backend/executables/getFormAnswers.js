@@ -9,28 +9,72 @@ const Question = require(`${__dirname}/../lib/classes/Question.js`);
     db.connect({ source: 'prod'});
     const form = new SatisfactionForm({id: process.env.SATISFACTIONFORMID})
     const questions = await form.getThisQuestions();
+    console.log(questions[0]);
     const answers = await form.getThisAnswers();
+    
+    // Creates the object
     const results = {};
+    const stats = {};
+    const ids = [];
     for(let question of questions) {
         results[question.id] = [];
+        stats[question.id] = {};
+        ids.push(question.id);
     }
+    console.log(answers);
+    
+    // Filled each variable with the answers
     for (let answer of answers){
-        console.log(answer);
         for(let result of answer.answers){
             results[result.id].push(result.results)
         }
     }
 
-    // RESULTS est ok
-    // RECUPERER LE NOMBRE TOTAL DE REPONSES
-    // CALCULER LE POURCENTAGE DE REPONSE PAR RAPPORT AU TOTAL
-    // RECUPERER LES REPONSES TEXT EN NOMINATIF
+    const totalAnswers = answers.length;
 
-    console.log(results);
+    
+    for(let question of questions) {
+        if(question.type === "checkbox" || question.type === "radio"){
+            stats[question.id] = getCheckBoxQuestionStat(question, results, totalAnswers);
+        }
+    }
+
     return results;
 
 })().then( answers => process.exit(1) ).catch( err => console.log(err) );
 
-function trimAnswers( answers ) {
+/**
+ * Generates a statistic element for question of type multiple checkboxes
+ * @param {Question} question 
+ */
+function getCheckBoxQuestionStat(question, results, totalAnswers){
+    let questionStat = {};
+    for(let answer of question.answers){
+        questionStat[answer] = { count: 0, percentage: 0 };
+    }
 
+    for(let possibleAnswer of question.answers){
+        getCountCheck(question, results, questionStat, possibleAnswer);
+        questionStat[possibleAnswer].percentage = getPercentage(questionStat[possibleAnswer].count, totalAnswers)
+    }
+    return questionStat;
+
+}
+/**
+ * Get how many responses correspond to each possible question
+ * @param {Question} question 
+ * @param {Array} results 
+ * @param {Object} questionStat 
+ * @param {String} possibleAnswer 
+ */
+function getCountCheck(question, results, questionStat, possibleAnswer) {
+    for(let answerArray of results[question.id]){
+        for(let answer of answerArray){
+            if(answer === possibleAnswer) questionStat[possibleAnswer].count ++;
+        }
+    }
+}
+
+function getPercentage(answerCount, totalAnswers){
+    return Math.round( ( answerCount / totalAnswers ) * 100 );
 }

@@ -54,7 +54,6 @@ class SatisfactionForm {
     }
 
     async getThisQuestions(){
-        console.log(this.id);
         const questions = await Question.findByFormId(this.id);
         return questions;
     }
