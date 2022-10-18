@@ -4,10 +4,11 @@ const Question = require(`${__dirname}/Question.js`);
 
 class SatisfactionForm {
 
-    constructor({name, questions, answers}){
-        this.name = name;
+    constructor({id, name, questions, answers}){
+        this.name = (name) ? name : '';
         this.questions = (questions) ? questions : [];
         this.answers = (answers) ? answers : 0;
+        this.id = (id) ? id : '';
     }
 
     async save(){
@@ -40,6 +41,22 @@ class SatisfactionForm {
     static async getAllAnswers(){
         const answers = await FormAnswerModel.find();
         return answers;
+    }
+
+    static async getAnswersByFormId(id){
+        const answers = await FormAnswerModel.find({formId: id});
+        return answers;
+    }
+
+    async getThisAnswers(){
+        const answers = FormAnswerModel.find({formId: this.id});
+        return answers;
+    }
+
+    async getThisQuestions(){
+        console.log(this.id);
+        const questions = await Question.findByFormId(this.id);
+        return questions;
     }
 
     /**

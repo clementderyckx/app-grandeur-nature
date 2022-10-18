@@ -25,7 +25,10 @@ class Question {
         return questions;
     }
 
-
+    static async findByFormId(formId){
+        const questions = await QuestionModel.find({formId: formId});
+        return questions;
+    }
 
 }
 
