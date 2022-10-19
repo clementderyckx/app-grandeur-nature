@@ -24,3 +24,16 @@
     text-decoration: none;
     color: $color;
 }
+
+@mixin rank-elem-bg(){
+    transition: background 0.2s ease-out;
+    background: $rank-item-bg;
+    &:hover{
+        transition: background 0.2s ease-out;
+        background: $rank-item-bg-active;
+    }
+    &.active{
+        transition: background 0.2s ease-out;
+        background: $rank-item-bg-active;
+    }
+}

@@ -7,6 +7,10 @@ $first-color: #000;
 $first-color-elements: #fff;
 $first-color-elements-darken: lighten($first-color, 80%);
 
+$rank-item-bg: #FCF2C8;
+$rank-item-bg-active: darken($rank-item-bg, 10%);
+
+
 $success: #41e73f;
 $gauge-fill: #B9EEDA;
 $gauge-text: #5DC8A6;

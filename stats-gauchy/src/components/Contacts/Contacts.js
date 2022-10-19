@@ -11,16 +11,7 @@ export default function Contacts({type}) {
   const donwloadContacts = ({ format }) => {
     fetch(downloadApi, {method: 'POST'})
     .then(res => res.json())
-    .then(response => {
-      console.log(response)
-      const link = document.createElement('a');
-      link.setAttribute('href', response.result.url);
-      link.setAttribute('download', 'download');
-      document.querySelector('body').appendChild(link);
-      link.click();
-      
-    })
-
+    .then(response => autodownload(response.result.url))
   }
   const title = getTitle(type);
   return (
@@ -49,4 +40,12 @@ function getTitle(type){
   } else if(type === 'presents'){
     return `${base} badgés présents du salon.`
   }
+}
+
+function autodownload(url){
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', 'download');
+  document.querySelector('body').appendChild(link);
+  link.click();
 }

@@ -11,7 +11,8 @@ function App() {
     return (
         <div className="App">
             <Routes>
-                <Route path="/" element={<Subscribe />} />
+                {/* <Route path="/" element={<Subscribe />} /> */}
+                <Route path='/' element={<SatisfactionForm />}/>
                 <Route path='/questionnaire-satisfaction' element={<SatisfactionForm />}/>
                 <Route path='/questionnaire-satisfaction/:id' element={<SatisfactionForm />}/>
                 <Route path='/qrcode-scanner' element={<QrcodeReader/>}/>
