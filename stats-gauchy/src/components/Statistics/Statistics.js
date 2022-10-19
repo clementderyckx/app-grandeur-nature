@@ -1,12 +1,14 @@
 import './Statistics.css';
+import { appConfig } from '../../config';
 
 import React from 'react'
 import { useEffect, useState } from 'react';
 
 export default function Statistics({type, title}) {
 
-  // const showApi = (type && type === 'subscribers') ? 'https://salon-gauchy.herokuapp.com/salon/contacts/all/' : 'https://salon-gauchy.herokuapp.com/salon/pass/all/presents/';
-  const showApi = (type && type === 'subscribers') ? 'http://localhost:4009/salon/contacts/all/' : 'http://localhost:4009/salon/pass/all/presents/';
+  
+  const showApi = (type && type === 'subscribers') ? `${appConfig.apiUrl}/salon/contacts/all/` : `${appConfig.apiUrl}/salon/pass/all/presents/`;
+  // const showApi = (type && type === 'subscribers') ? `http://localhost:4009/salon/contacts/all/` : `${appConfig.apiUrl}/salon/pass/all/presents/`;
 
   const [stats, updateStats] = useState({awaiting: 500, subscribers: 0, gauge: "0%" ,mySector: 0});
   const getStats = async () => {
@@ -41,7 +43,7 @@ export default function Statistics({type, title}) {
               
             <div className="stats-item" id="subscribers">
               <div className="stats-item-container">
-                <h3 className="stats-item-title">Inscrits</h3>
+                <h3 className="stats-item-title">{(type && type === 'subscribers') ? "Inscrits" : "Présents"}</h3>
                 <p className="stats-item-result">{stats.subscribers}</p>
                 <div className="stats-item-mention">
                   <div className="gauge">

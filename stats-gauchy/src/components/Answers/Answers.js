@@ -1,14 +1,17 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { appConfig } from '../../config';
 import SatisfactionAnswer from '../SatisfactionAnswer/SatisfactionAnswer';
 import './Answers.css';
 
 export default function Answers({title}) {
 
   const [questions, updateQuestions] = useState([]);
+  const [stats, updateStats] = useState([]);
 
   useEffect(() => {
     getQuestions(updateQuestions);
+    getStatistics(updateStats);
   }, [])
 
   return (
@@ -19,7 +22,7 @@ export default function Answers({title}) {
 
       <div className="answers">
         <div className="form-container">
-          {questions.map((question, index) => <SatisfactionAnswer question={question} number={index+1} key={`question-${index+1}`}/>)}
+          {questions.map((question, index) => (stats[question._id]) ? <SatisfactionAnswer stats={stats} question={question} number={index+1} key={`question-${index+1}`}/> : null )}
           
         </div>
 
@@ -28,8 +31,15 @@ export default function Answers({title}) {
   )
 }
 function getQuestions (updateQuestions) {
-  fetch(`http://localhost:4009/salon/satisfaction/form/6328affa6931a17fa3aa404b/questions/`).then(res => res.json()).then( response => {
-    console.log(response.result);
+  fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/questions/`).then(res => res.json()).then( response => {
     updateQuestions(response.result);
   })
+}
+
+function getStatistics(updateStats){
+  fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/responses/`)
+  .then(response => response.json())
+  .then( response => {
+    updateStats(response.result)
+  } );
 }

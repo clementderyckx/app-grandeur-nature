@@ -4,14 +4,15 @@ import ContactsArray from '../ContactsArray/ContactsArray'
 import SearchInput from '../SearchInput/SearchInput';
 import ExpandBtn from '../ExpandBtn/ExpandBtn';
 import Statistics from '../Statistics/Statistics';
+import { appConfig } from '../../config';
 
 export default function Contacts({type}) {
-  const downloadApi = (type && type === 'subscribers') ? 'http://localhost:4009/exports/contacts/salon/all/' : 'http://localhost:4009/exports/contacts/salon/presents';
+  const downloadApi = (type && type === 'subscribers') ? `${appConfig.apiUrl}/exports/contacts/salon/all/`: `${appConfig.apiUrl}/exports/contacts/salon/presents`;
   const donwloadContacts = ({ format }) => {
     fetch(downloadApi, {method: 'POST'})
     .then(res => res.json())
     .then(response => {
-      console.log(response)   
+      console.log(response)
       const link = document.createElement('a');
       link.setAttribute('href', response.result.url);
       link.setAttribute('download', 'download');
