@@ -31,6 +31,9 @@ satisfactionRouter.post('/form/:id/register', (req, res) => satisfactionLib.regi
 // REGISTER THE FORM WITH ITS QUESTIONS
 satisfactionRouter.get('/form/:formId/check/:contactId', (req, res) =>  satisfactionLib.checkIfContactHasAnswer(req, res))
 
+// STATISTICS FOR SPECIFIC FORM ID
+satisfactionRouter.get('/form/:formId/responses', (req, res) =>  satisfactionLib.getFormStats(req, res))
+
 
 
 

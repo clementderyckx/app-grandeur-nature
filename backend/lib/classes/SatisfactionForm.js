@@ -1,6 +1,7 @@
 const SatisfactionFormModel = require(`${__dirname}/../db/satisfactionForm.js`);
 const FormAnswerModel = require(`${__dirname}/../db/formAnswer.js`);
 const Question = require(`${__dirname}/Question.js`);
+const Contact = require(`${__dirname}/Contact.js`);
 
 class SatisfactionForm {
 
@@ -99,6 +100,114 @@ class SatisfactionForm {
             questions: results
         };
     }
+
+
+    // STATISTICS PART
+
+    /**
+     * Generates a statistic element for question of type multiple checkboxes
+     * @param {Question} question 
+     */
+    getSelectQuestionStat(question, results, totalAnswers){
+        let questionStat = {};
+        for(let answer of question.answers){
+            questionStat[answer] = { count: 0, percentage: 0 };
+        }
+
+        for(let possibleAnswer of question.answers){
+            this.getCount(question, results, questionStat, possibleAnswer);
+            questionStat[possibleAnswer].percentage = SatisfactionForm.getPercentage(questionStat[possibleAnswer].count, totalAnswers)
+        }
+        return questionStat;
+
+    }
+    /**
+     * Get how many responses correspond to each possible question
+     * @param {Question} question 
+     * @param {Array} results 
+     * @param {Object} questionStat 
+     * @param {String} possibleAnswer 
+     */
+    getCount(question, results, questionStat, possibleAnswer) {
+        for(let answerArray of results[question.id]){
+            for(let answer of answerArray){
+                if(answer === possibleAnswer) questionStat[possibleAnswer].count ++;
+            }
+        }
+    }
+
+    static getPercentage(count, total){
+        return Math.round( ( count / total ) * 100 );
+    }
+
+    /**
+     * 
+     * @param {Array{Question}} questions 
+     * @param {Array{FormAnswer}} answers 
+     * @returns {Object} results
+     */
+    async getResults(questions, answers){
+        const results = {};
+        for(let question of questions) {
+            results[question.id] = [];
+        }
+        // Filled each variable with the answers
+        for (let answer of answers){
+            for(let result of answer.answers){
+                // console.log(answer);
+                if(result.type === 'text'){
+                    const response = result.results[0];
+                    if(response.length > 0 ) results[result.id].push({ contact: await Contact.findById(answer.contactId), result: response});
+                } else {
+                    results[result.id].push(result.results)
+                }
+            }
+        }
+
+        return results;
+    }
+
+    /**
+     * 
+     * @param {Array{Questions}} questions 
+     * @param {Object} results 
+     * @param {Number} totalAnswers 
+     * @returns {Object} stats
+     */
+    async getStatsFromResults(questions, results, totalAnswers){
+        const stats = {};
+        for(let question of questions) {
+            if(question.type === 'text'){
+                stats[question.id] = []
+            } else {
+                stats[question.id] = {};
+            }
+        }
+
+        for(let question of questions) {
+            if(question.type === "checkbox" || question.type === "radio" || question.type === "rank"){
+                stats[question.id] = this.getSelectQuestionStat(question, results, totalAnswers);
+            } else if (question.type === "text"){
+                stats[question.id] = results[question.id]
+            }
+        }
+
+        return stats;
+    }
+
+    async getStats(){
+        const questions = await this.getThisQuestions();
+        const answers = await this.getThisAnswers();
+        const totalAnswers = answers.length;
+        
+        // Generates Statistics
+        const results = await this.getResults(questions, answers);
+        const stats = await this.getStatsFromResults(questions, results, totalAnswers);
+    
+    
+        return stats;
+    }
+    
 }
 
 module.exports = SatisfactionForm;

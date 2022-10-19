@@ -50,10 +50,18 @@ function getFormAnswers(req, res){
     .catch(err => res.send( new Response(500, "Error on fetching answers", "There was an error whil attempt to fetch formAnswers")));
 }
 
+function getFormStats(req, res){
+    const form = new SatisfactionForm({id: req.params.formId})
+    form.getStats()
+    .then(results => res.send( new Response(200, 'Form has been found and stats generated', results) ))
+    .catch(err => { console.log(err); res.send( new Response(500, "Internal error on generating statistics, please try again in a moment", err) )})
+}
+
 module.exports = {
     findForm: findForm,
     findFormQuestions: findFormQuestions,
     registerFormAnswers: registerFormAnswers,
     checkIfContactHasAnswer: checkIfContactHasAnswer,
     getFormAnswers: getFormAnswers,
+    getFormStats: getFormStats,
 }
