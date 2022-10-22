@@ -8,16 +8,21 @@ export default function Answers({title}) {
 
   const [questions, updateQuestions] = useState([]);
   const [stats, updateStats] = useState([]);
+  const [total, updateTotal] = useState(0);
 
   useEffect(() => {
     getQuestions(updateQuestions);
-    getStatistics(updateStats);
+    getStatistics(updateStats, updateTotal);
   }, [])
 
   return (
-    <div className="reponses">
+    <div className="responses">
       <div className="title">
         <h1>{title}</h1>
+      </div>
+
+      <div className="total">
+        <p>{total} réponses enregistrées</p>
       </div>
 
       <div className="answers">
@@ -31,11 +36,16 @@ export default function Answers({title}) {
   )
 }
 function getQuestions (updateQuestions) {
-  fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/questions/`).then(res => res.json()).then( response => updateQuestions(response.result));
+  fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/questions/`)
+  .then(res => res.json())
+  .then( response => updateQuestions(response.result));
 }
 
-function getStatistics(updateStats){
+function getStatistics(updateStats, updateTotal){
   fetch(`${appConfig.apiUrl}/salon/satisfaction/form/${appConfig.satisfactionFormId}/responses/`)
   .then(response => response.json())
-  .then( response => updateStats(response.result));
+  .then( response => {
+    updateStats(response.result.stats);
+    updateTotal(response.result.total);
+  });
 }

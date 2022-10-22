@@ -191,8 +191,8 @@ class SatisfactionForm {
                 stats[question.id] = results[question.id]
             }
         }
-
-        return stats;
+        
+        return { total: totalAnswers, stats: stats };
     }
 
     async getStats(){
@@ -203,8 +203,7 @@ class SatisfactionForm {
         // Generates Statistics
         const results = await this.getResults(questions, answers);
         const stats = await this.getStatsFromResults(questions, results, totalAnswers);
-    
-    
+
         return stats;
     }
     

@@ -1,0 +1,17 @@
+@import './../../css/lib';
+
+table.text-answer{
+    width: 100%;
+    th{
+        text-align: left;
+        font-weight: 500;
+        font-size: 16px;
+    }
+    th, td{
+        min-width: 200px;
+        padding: 10px 30px 10px 0px;
+    }
+    tr{
+        border-bottom: 1px solid #aaa;
+    }
+}
