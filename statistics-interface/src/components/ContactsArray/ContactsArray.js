@@ -1,29 +1,40 @@
 import './ContactsArray.css';
 import React from 'react'
 import TransactionsArrayRow from './../TransactionsArrayRow/TransactionsArrayRow';
+import Pagination from '../Pagination/Pagination';
 import { useState, useEffect } from 'react';
 import { appConfig } from '../../config';
 
 export default function ContactsArray({type}) {
   
-  const showApi = (type && type === 'subscribers') ? `${appConfig.apiUrl}/salon/contacts/all/` : `${appConfig.apiUrl}/salon/pass/all/presents/`;
-  console.log('api url :');
-  console.log(showApi);
   const [contacts, updateContacts] = useState([]);
-
+  const [total, updateTotal] = useState(0);
+  const [actualPage, updateActualPage] = useState(1);
+  const perPage = 25;
+  const apiUrl = (type && type === 'subscribers') ? `${appConfig.apiUrl}/salon/contacts` : `${appConfig.apiUrl}/salon/contacts/presents`;
+  
 
   const getContact = (response) => {
-    const contactsArray = [];
-    for(let contact of response){
-      contactsArray.push(contact);
+    const contactsArray = response.contacts;
+    const contacts = [];
+    for(let contact of contactsArray) {
+      if(contact !== null) contacts.push(contact);
     }
-    updateContacts(contactsArray);
+    updateContacts(contacts);
+    updateTotal(response.totalContacts);
   }
-  const fetchContacts = () => {
-    fetch(showApi)
+
+  const fetchContacts = (pagination) => {
+    const page = (pagination) ? pagination : 1;
+    updateActualPage(page);
+
+    fetch(`${apiUrl}/${perPage}/${page}`)
     .then( res => res.json() )
-    .then( response => getContact(response))
+    .then( response => {
+      getContact(response);
+    })
   }
+
 
 
   useEffect(() => { fetchContacts() }, [])
@@ -33,6 +44,8 @@ export default function ContactsArray({type}) {
 
       <TransactionsArrayRow type="tableHead" values={['Nom', "Prénom", "Société", "Code-Postal", "Tel", "Adresse-mail", "Présence"]} />
       {contacts.map((contact, i) => <TransactionsArrayRow values={contact} key={`car-${i}`}/>)}
+
+      <Pagination perPage={perPage} total={total} actualPage={actualPage} fetchFunction={fetchContacts} />
     </div>
   )
 }

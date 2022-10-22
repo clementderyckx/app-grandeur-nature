@@ -1,0 +1,19 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.pagination .pagination-element {
+  padding: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.pagination .pagination-element:hover {
+  text-decoration: underline;
+}
+.pagination .pagination-element.active {
+  font-weight: 500;
+  text-decoration: underline;
+}
+.pagination .pagination-element.active:hover {
+  text-decoration: none;
+}/*# sourceMappingURL=Pagination.css.map */

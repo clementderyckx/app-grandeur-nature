@@ -23,8 +23,33 @@ contactsRouter.post('/create/', (req, res, next) => {
 contactsRouter.get('/all/', async (req, res, next) => {
     const contacts = await contactModel.find();
     res.send(contacts);
-    
     next();
+    
+})
+
+// GETS ALL CONTACTS THAT HAS SUBSCRIBES TO THE EVENT
+contactsRouter.get('/:perpage/:page', async (req, res, next) => {
+    const allContacts = await contactModel.find();
+    const page = Number(req.params.page);
+    const perPage = Number(req.params.perpage);
+    const contacts = [];
+    for(let i = ((page - 1) * perPage); i < (page * perPage); i++){
+        contacts.push(allContacts[i]);
+    }
+    res.send({totalContacts: allContacts.length, contacts: contacts});
+    
+})
+
+// GET ALL CONTACTS THAS HAVE PRESENCE SET TO TRUE by pagination
+contactsRouter.get('/presents/:perpage/:page', async (req, res, next) => {
+    const allContacts = await Contact.findFiltered({presence: true});
+    const page = Number(req.params.page);
+    const perPage = Number(req.params.perpage);
+    const contacts = [];
+    for(let i = ((page - 1) * perPage); i < (page * perPage); i++){
+        contacts.push(allContacts[i]);
+    }
+    res.send({totalContacts: allContacts.length, contacts: contacts});
 })
 
 
@@ -40,6 +65,7 @@ contactsRouter.get('/prod/:id', async (req, res, next) => {
 
     next();
 })
+
 
 
 
@@ -69,9 +95,8 @@ contactsRouter.get('/presents/', async (req, res, next) => {
 contactsRouter.get('/hasbadge/:value', async (req, res, next) => {
     const value = (req.params.value === 'true');
     const contacts = await Contact.findFiltered({hasBadge: value});
-    res.send(contacts);
-
     next();
+    res.send(contacts);
 })
 
 

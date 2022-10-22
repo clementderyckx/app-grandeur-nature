@@ -1,7 +1,7 @@
 import React from 'react';
 import './TextAnswers.css';
 export default function TextAnswers({stat}){
-
+    console.log(stat);
     return(
       <table className='text-answer'>
         <thead>
@@ -12,11 +12,11 @@ export default function TextAnswers({stat}){
             </tr>
         </thead>
         <tbody>
-          {stat.map(answer => (<tr key={answer.contact._id}>
+          {stat.map(answer => (answer && answer.contact) ? (<tr key={answer.contact._id}>
             <td>{upperCase(`${answer.contact.lastname} ${answer.contact.firstname}`)} </td>
             <td>{answer.contact.company}</td>
             <td>{answer.result}</td>
-          </tr> ))}
+          </tr> ) : null)}
         </tbody>
         <tfoot>
             <tr>
