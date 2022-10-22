@@ -9,17 +9,6 @@ import React from 'react';
 function App() {
   return (
       <div className="App">
-
-          {/* <header className="header">
-            <div className="header-actions">
-
-              <div className="machin-actions"></div>
-              <div className="login-actions">
-                <p>Login Actions</p>
-              </div>
-              
-            </div>
-          </header> */}
         
         <Sidebar />
 
@@ -27,11 +16,10 @@ function App() {
 
             <div className="app">
               <Routes>
-                <Route path="/" element=""/>
+                <Route path="/" element={<Inscrits />}/>
                 <Route path="/inscrits" element={<Inscrits />}/>
                 <Route path="/presents" element={<Presents />}/>
                 <Route path="/reponses" element={<Reponses />}/>
-                <Route path="/send" element={<SendBadge/>}/>
               </Routes>
             </div>
         </div>
